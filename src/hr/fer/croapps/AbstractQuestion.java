@@ -12,4 +12,22 @@ public abstract class AbstractQuestion implements Question {
     }
 
     public abstract boolean isCorrectAnswer(String answer);
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (!(obj instanceof AbstractQuestion))
+            return false;
+
+        AbstractQuestion other = (AbstractQuestion) obj;
+        if (text == null) {
+            if (other.text != null)
+                return false;
+        } else if (!text.equals(other.text))
+            return false;
+        return true;
+    }
 }
