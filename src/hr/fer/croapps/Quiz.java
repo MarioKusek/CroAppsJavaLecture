@@ -1,6 +1,7 @@
 package hr.fer.croapps;
 
 public class Quiz {
+    public static final int MAX_NUMBER_OF_QUESTIONS = 10;
     private String name;
     private ShortAnswerQuestion[] questions = new ShortAnswerQuestion[10];
     private int noOfQuestions = 0;
@@ -18,6 +19,9 @@ public class Quiz {
     }
 
     public void addQuestion(String text, String answer) {
+        if(noOfQuestions == MAX_NUMBER_OF_QUESTIONS)
+            throw new IllegalStateException("Quiz has maximal number of questions.");
+
         questions[noOfQuestions] = new ShortAnswerQuestion(text, answer);
         noOfQuestions++;
 
@@ -25,6 +29,9 @@ public class Quiz {
     }
 
     public void addQuestion(ShortAnswerQuestion question) {
+        if(noOfQuestions == MAX_NUMBER_OF_QUESTIONS)
+            throw new IllegalStateException("Quiz has maximal number of questions.");
+
         questions[noOfQuestions] = question;
         noOfQuestions++;
 
