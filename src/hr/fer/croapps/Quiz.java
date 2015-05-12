@@ -9,12 +9,23 @@ public class Quiz {
         name = "Initial Quiz";
     }
 
+    public Quiz(String name) {
+        this.name = name;
+    }
+
     public String getName() {
         return name;
     }
 
     public void addQuestion(String text, String answer) {
         questions[noOfQuestions] = new ShortAnswerQuestion(text, answer);
+        noOfQuestions++;
+
+        //TODO max number of questions
+    }
+
+    public void addQuestion(ShortAnswerQuestion question) {
+        questions[noOfQuestions] = question;
         noOfQuestions++;
 
         //TODO max number of questions
