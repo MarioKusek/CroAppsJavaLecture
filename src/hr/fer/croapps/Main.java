@@ -1,20 +1,27 @@
 package hr.fer.croapps;
 
+import java.util.Scanner;
+
 public class Main {
     public static void main(String[] args) {
-        ShortAnswerQuestion question1 = new ShortAnswerQuestion(
-                "What is the Android programming language?", "Java");
-        ShortAnswerQuestion question2 = new ShortAnswerQuestion(
-                "What is the iPhone programming language?", "Objective-C");
+        Quiz quiz = new Quiz();
+        quiz.addQuestion("What is the Android programming language?", "Java");
+        quiz.addQuestion("What is the iPhone programming language?",
+                "Objective-C");
 
-        System.out.println(question1.getText());
-        System.out.print("objective-c: " +
-                question1.isCorrectAnswer("objective-c"));
-        System.out.println(" java: " + question1.isCorrectAnswer("java"));
+        Scanner scanner = new Scanner(System.in);
+        int noOfCorrectAnswers = 0;
+        for (int i = 0; i < quiz.getNoOfQuestions(); i++) {
+            System.out.println(quiz.getQuestion(i));
+            String answer = scanner.nextLine();
+            if(quiz.isCorrectAnswer(i, answer)) {
+                noOfCorrectAnswers++;
+                System.out.println("Correct!");
+            } else {
+                System.out.println("Incorrect.");
+            }
+        }
 
-        System.out.println(question2.getText());
-        System.out.print("objective-c: " +
-                question2.isCorrectAnswer("objective-c"));
-        System.out.println(" java: " + question2.isCorrectAnswer("java"));
+        System.out.println("You had " + noOfCorrectAnswers + " correct answers of total " + quiz.getNoOfQuestions() + ".");
     }
 }
