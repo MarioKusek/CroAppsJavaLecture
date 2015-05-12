@@ -3,7 +3,13 @@ package hr.fer.croapps;
 public class MainException {
     public static void main(String[] args) {
         Quiz quiz = new Quiz();
-        populateQuiz(quiz);
+        try {
+            populateQuiz(quiz);
+        } catch (IllegalStateException e) {
+            //e.printStackTrace();
+            System.out.println("Exception caught.");
+        }
+
         System.out.println("Quiz is ready.");
     }
 
